@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Search, ShieldCheck, Heart, Star, ShoppingBag, Users, FileText, Smartphone, CheckCircle2, Quote } from 'lucide-react';
+import { Search, ShieldCheck, Heart, Star, ShoppingBag, Users, FileText, Smartphone, CheckCircle2, Quote, Banknote } from 'lucide-react';
 import { cn } from '../lib/utils';
 
 const fadeInUp = {
@@ -370,8 +370,9 @@ export function Landing() {
                 className="bg-white/10 backdrop-blur-md p-8 rounded-[20px_100px_20px_20px] border border-white/20 hover:bg-white/15 transition-colors"
               >
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-brand-blue font-bold text-xl shadow-inner shrink-0">
-                    €125
+                  <div className="w-16 h-16 bg-white rounded-full flex flex-col items-center justify-center text-brand-black font-bold text-xs shadow-inner shrink-0">
+                    <Banknote className="text-brand-black" size={24} />
+                    <span className="text-brand-black">125€</span>
                   </div>
                   <div>
                     <h4 className="font-medium text-lg">Monatlicher Entlastungsbetrag</h4>
