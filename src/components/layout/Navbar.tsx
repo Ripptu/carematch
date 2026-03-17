@@ -9,12 +9,15 @@ export function Navbar() {
   const { user, role, signOut } = useAuth();
   const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
       
+      setIsScrolled(currentScrollPos > 50);
+
       // Hero area check: if we are at the top, show it.
       if (currentScrollPos < 100) {
         setIsVisible(true);
@@ -39,7 +42,10 @@ export function Navbar() {
     <motion.nav 
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-black/5"
+      className={cn(
+        "fixed top-0 z-50 w-full transition-all duration-300",
+        isScrolled ? "bg-white/80 backdrop-blur-md border-b border-black/5" : "bg-transparent border-transparent"
+      )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
